@@ -1,0 +1,67 @@
+.form-steps {
+  border-right: 1px solid $grey-light2-clr;
+
+  @include r-min($break-t) {
+    min-height: calc(100vh - 79px); // TODO - hard code, need optimization for dynamic header height receiving
+  }
+
+  .steps-list {}
+
+  .form-step {
+    width: 270px;
+    padding: 16px $offset-m;
+    font-size: 0;
+
+    &-complete {
+      .step-title {
+        padding-left: 8px;
+
+        &:before {
+          display: none;
+        }
+      }
+
+      i {
+        color: $primary-green-clr;
+        font-size: 15px;
+      }
+    }
+
+    &-in-progress {
+      background-color: $grey-light-clr;
+
+      .step-title {
+        font-weight: 700;
+        color: $dark-clr;
+
+        &:before {
+          background-color: $general-blue-clr;
+          border-color: $general-blue-clr;
+        }
+      }
+    }
+
+    &-not-passed {
+      .step-title {
+        color: $grey-clr;
+      }
+    }
+  }
+
+  .step-title {
+    position: relative;
+    padding-left: 26px;
+    @include font(text-m);
+    color: $dark-mid-clr;
+
+    &:before {
+      position: absolute;
+      top: calc(50% - 6px);
+      left: 2px;
+      content: "";
+      @include sq(12px);
+      border: 1px solid $grey-clr;
+      border-radius: 50%;
+    }
+  }
+}

@@ -1,0 +1,66 @@
+.text-field-wrapper {
+  .text-field-label {
+    display: block;
+    @include font(text-s);
+  }
+
+  .field-wrap {
+    position: relative;
+
+    i {
+      position: absolute;
+      top: calc(50% - 12px);
+      line-height: 24px;
+      font-size: 24px;
+      color: $grey-clr;
+      pointer-events: none;
+    }
+  }
+
+  .text-field {
+    width: 100%;
+    height: 36px;
+    margin-top: 3px;
+    padding: 0 12px;
+    @include font(text-l);
+    color: $dark-clr;
+    background-color: $grey-light-clr;
+    border-radius: 5px;
+    border: none;
+  }
+
+  &.type-number {
+    .text-field {
+      width: 64px;
+
+      -moz-appearance: textfield;
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+
+    i {
+      right: 8px;
+    }
+  }
+
+  &.type-date {
+    .text-field {
+      width: 176px;
+      padding-left: 45px;
+      padding-right: 0;
+
+      &::-webkit-clear-button,
+      &::-ms-clear {
+        display: none;
+        -webkit-appearance: none;
+      }
+    }
+
+    i {
+      left: 12px;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+@import 'mixins';
+@import 'mediaqueries';
+@import 'typography';
+
+
+// App colors palette
+/////////////////////
+// Blue
+$general-blue-clr:    #008eff;
+
+// Grey
+$grey-clr:            #c7c7c7;
+$grey-lighten-clr:    #fafafa;
+$grey-light-clr:      #f6f6f6;
+$grey-light2-clr:     #e9e9e9;
+$dark-clr:            #363636;
+$dark-mid-clr:        #6c757d;
+
+// White
+$white-clr:           #fff;
+
+// Black
+$black-clr:           #000;
+
+// Green
+$primary-green-clr:   #6cd0a0;
+$light-green-clr:     #f3fdf8;
+
+
+// Static numbers
+/////////////////////
+// Page wrap width
+$base-wrap: 1440px;
+
+// Offset between blocks
+$offset-m:        24px;
+$offset-m-plus:   32px;
+$offset-l:        48px;
+
+
+// Z-index values
+/////////////////////
+$z-min:    -1;
+$z-default: 0;
+$z-max:     999999;
+
+$z-xxs:     4;
+$z-xs:      5;
+$z-s:       6;
+$z-m:       7;
+$z-l:       8;

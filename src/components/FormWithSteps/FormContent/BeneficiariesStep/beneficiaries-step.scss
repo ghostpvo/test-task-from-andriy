@@ -1,0 +1,9 @@
+.beneficiaries-step {
+  .step-title {
+    @include font(heading-m, 700);
+  }
+
+  .go-next-step {
+    margin-top: $offset-l;
+  }
+}

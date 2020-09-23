@@ -1,0 +1,47 @@
+.beneficiary-field {
+  display: flex;
+  align-items: flex-end;
+  margin-top: $offset-m;
+
+  .select-field-wrap,
+  .text-field-wrapper {
+    margin-right: $offset-m-plus;
+  }
+
+  &-name {
+    width: 240px;
+  }
+
+  &-date {
+    width: 176px;
+  }
+
+  &-ssn {
+    width: 80px;
+  }
+
+  &-description {
+    width: 112px;
+  }
+
+  &-relationship {
+    width: 112px;
+  }
+
+  &-percent {
+    width: 64px;
+    margin-right: 0!important; // Safety checked
+  }
+
+  .save-beneficiary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include sq(36px);
+    cursor: pointer;
+
+    i {
+      color: $primary-green-clr;
+    }
+  }
+}

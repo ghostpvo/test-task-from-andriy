@@ -1,0 +1,21 @@
+// Reusable UI modules, available globally
+.main-btn {
+  display: inline-block;
+  padding: 6px 44px;
+  color: $white-clr;
+  @include font(text-m);
+  background-color: $general-blue-clr;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  transition: background .3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lighten($general-blue-clr, 10%);
+  }
+
+  &.disabled {
+    cursor: default;
+    background-color: $grey-clr;
+  }
+}

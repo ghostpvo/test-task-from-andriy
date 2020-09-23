@@ -1,0 +1,5 @@
+.form-with-steps {
+  display: flex;
+  align-items: flex-start;
+  @include base-wrap();
+}

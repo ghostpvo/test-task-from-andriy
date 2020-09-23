@@ -1,0 +1,99 @@
+.general-header {
+  display: flex;
+  align-items: center;
+  @include base-wrap();
+  padding: 10px $offset-m;
+
+  &-wrap {
+    border-bottom: 1px solid $grey-light2-clr;
+  }
+
+  .logo-place {
+  }
+
+  .app-logo-link {
+    display: flex;
+    align-items: center;
+  }
+
+  .app-logo-icon {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 20px;
+    color: $general-blue-clr;
+  }
+
+  .app-title {
+    @include font(heading-l);
+    color: $black-clr;
+  }
+
+  .general-description {
+    @include font(text-s);
+    color: $dark-clr;
+  }
+
+  .header-progress-list {
+    display: flex;
+  }
+
+  .header-step {
+    position: relative;
+    width: 270px;
+    text-align: center;
+
+    &:before {
+      position: absolute;
+      left: -50%;
+      top: 20px;
+      z-index: $z-xxs;
+      width: 100%;
+      height: 2px;
+      content: "";
+      background-color: $grey-light2-clr;
+    }
+
+    &-done {
+      &:before {
+        background-color: $general-blue-clr;
+      }
+
+      .header-step-icon {
+        background-color: $general-blue-clr;
+        border-color: $white-clr;
+        box-shadow: 0 0 0 2px $general-blue-clr;
+      }
+
+      .header-step-dscr {
+        color: $black-clr;
+      }
+    }
+
+    &:first-child {
+      &:before {
+        display: none;
+      }
+    }
+  }
+
+  .header-step-icon {
+    position: relative;
+    z-index: $z-xs;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include sq(40px);
+    margin: 0 auto 2px;
+    color: $white-clr;
+    font-size: 20px;
+    background-color: $grey-light2-clr;
+    border: 2px solid transparent;
+    border-radius: 50%;
+  }
+
+  .header-step-dscr {
+    display: block;
+    @include font(text-s);
+    color: $grey-clr;
+  }
+}

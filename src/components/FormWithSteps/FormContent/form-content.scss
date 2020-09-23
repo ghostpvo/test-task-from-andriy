@@ -1,0 +1,15 @@
+.form-content {
+  padding: $offset-l;
+
+  .form-step-title {
+    @include font(heading-s);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $dark-mid-clr;
+    font-weight: 400;
+  }
+
+  .form-step-content {
+    padding-top: $offset-l;
+  }
+}
