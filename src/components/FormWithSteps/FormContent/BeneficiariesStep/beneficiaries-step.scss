@@ -5,5 +5,56 @@
 
   .go-next-step {
     margin-top: $offset-l;
+
+    @include r-max($break-t) {
+      margin-top: $offset-m;
+    }
+  }
+
+  .primary-total {
+    display: inline-block;
+    padding: 0 12px;
+    @include font(text-l, 700);
+    border-radius: 5px;
+
+    .primary-total-title {
+      margin-right: 6px;
+    }
+
+    &-wrap {
+      margin-top: $offset-m;
+      margin-right: 36px;
+      text-align: right;
+    }
+
+    span {
+      display: inline-block;
+      vertical-align: top;
+      line-height: 36px;
+    }
+
+    &-less {
+      color: $orange-clr;
+      background-color: $orange-light-clr;
+    }
+
+    &-ok {
+      color: $primary-green-clr;
+      background-color: $light-green-clr;
+
+      i {
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 6px;
+        font-size: 22px;
+        line-height: 36px;
+        color: $primary-green-clr;
+      }
+    }
+
+    &-more {
+      color: $primary-red-clr;
+      background-color: lighten($primary-red-clr, 25);
+    }
   }
 }

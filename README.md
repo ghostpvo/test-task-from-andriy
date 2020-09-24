@@ -1,4 +1,4 @@
-# cozy-house
+# Test task
 
 ## Project setup
 ```

@@ -5,12 +5,20 @@
     min-height: calc(100vh - 79px); // TODO - hard code, need optimization for dynamic header height receiving
   }
 
+  @include r-max($break-t) {
+    display: none;
+  }
+
   .steps-list {}
 
   .form-step {
     width: 270px;
     padding: 16px $offset-m;
     font-size: 0;
+
+    @include r-max($break-d) {
+      width: 220px;
+    }
 
     &-complete {
       .step-title {

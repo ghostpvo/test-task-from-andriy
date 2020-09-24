@@ -25,6 +25,7 @@
 
 @mixin base-wrap() {
   width: $base-wrap;
+  max-width: 100%;
   margin-right: auto;
   margin-left: auto;
 }

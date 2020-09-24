@@ -1,0 +1,55 @@
+.checkbox-field {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  padding-right: 60px;
+  user-select: none;
+
+  &-input {
+    display: none;
+
+    &:checked + label {
+      .checkbox-field-icon {
+        border-color: $primary-green-clr;
+
+        &:before {
+          left: calc(100% - 19px);
+          background-color: $primary-green-clr;
+        }
+      }
+    }
+  }
+
+  &-wrap {
+    margin-top: $offset-l;
+  }
+
+  &-icon {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 44px;
+    height: 24px;
+    margin-top: -12px;
+    font-size: 0;
+    border: 2px solid $grey-clr;
+    border-radius: 12px;
+
+    &:before {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 18px;
+      height: 18px;
+      content: "";
+      background-color: $grey-clr;
+      border-radius: 50%;
+      transition: left .1s linear;
+    }
+  }
+
+  &-title {
+    @include font(text-l, 700);
+    color: $dark-clr;
+  }
+}

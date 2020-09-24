@@ -18,8 +18,8 @@
         :id="id"
         class="text-field"
         :placeholder="placeholder"
+        :disabled="disabled"
         v-model="currentVal"
-        @change="input"
       />
       <i
         v-if="type === 'date'"
@@ -38,23 +38,25 @@ export default {
   name: 'TextField',
   props: {
     label: {
-      type: String,
-      default: ''
+      type: String
     },
     type: {
-      type: String,
-      default: ''
+      type: String
     },
     id: {
-      type: String,
-      default: ''
+      type: String
     },
     placeholder: {
-      type: String,
-      default: ''
+      type: String
     },
     value: {
       type: String
+    },
+    disabled: {
+      type: Boolean
+    },
+    reset: {
+      type: Number
     }
   },
   data () {
@@ -62,9 +64,20 @@ export default {
       currentVal: this.value
     }
   },
+  watch: {
+    reset () {
+      this.resetForm()
+    },
+    currentVal () {
+      this.input()
+    }
+  },
   methods: {
     input () {
       this.$emit('input', this.currentVal)
+    },
+    resetForm () {
+      this.currentVal = ''
     }
   }
 }

@@ -48,14 +48,24 @@
 
   &.type-date {
     .text-field {
+      position: relative;
       width: 176px;
       padding-left: 45px;
       padding-right: 0;
 
+      &::-ms-clear,
       &::-webkit-clear-button,
-      &::-ms-clear {
+      &::-webkit-inner-spin-button {
         display: none;
         -webkit-appearance: none;
+      }
+
+      &::-webkit-calendar-picker-indicator {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -10px;
+        background: transparent;
       }
     }
 

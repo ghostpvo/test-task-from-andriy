@@ -39,12 +39,20 @@
       width: 100%;
       height: 36px;
       margin-top: 3px;
-      padding: 0 40px 0 12px;
+      padding: 0 35px 0 12px;
       @include font(text-l);
       color: $dark-clr;
       background-color: $grey-light-clr;
       border-radius: 5px;
       border: none;
+      -webkit-appearance: none;
+
+      &::-webkit-search-decoration,
+      &::-webkit-search-cancel-button,
+      &::-webkit-search-results-button,
+      &::-webkit-search-results-decoration {
+        display: none;
+      }
     }
 
     &__selected {

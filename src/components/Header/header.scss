@@ -29,18 +29,31 @@
   }
 
   .general-description {
+    display: inline-block;
     @include font(text-s);
     color: $dark-clr;
   }
 
   .header-progress-list {
     display: flex;
+
+    @include r-max($break-ld) {
+      margin-left: 10%;
+    }
+
+    @include r-max($break-t) {
+      display: none;
+    }
   }
 
   .header-step {
     position: relative;
     width: 270px;
     text-align: center;
+
+    @include r-max($break-ld) {
+      width: 150px;
+    }
 
     &:before {
       position: absolute;

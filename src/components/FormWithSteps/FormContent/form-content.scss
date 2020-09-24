@@ -1,5 +1,7 @@
 .form-content {
   padding: $offset-l;
+  margin-left: -1px;
+  border-left: 1px solid $grey-light2-clr;
 
   .form-step-title {
     @include font(heading-s);
@@ -11,5 +13,13 @@
 
   .form-step-content {
     padding-top: $offset-l;
+
+    @include r-max($break-t) {
+      padding-top: $offset-m;
+    }
+  }
+
+  @include r-max($break-d) {
+    padding: $offset-m 10px $offset-m $offset-m;
   }
 }

@@ -8,11 +8,11 @@ export default new Vuex.Store({
     describedBeneficiaries: []
   },
   mutations: {
-    PUSH_BENEFICIARY (state, data) {
+    PUSH_BENEFICIARY: (state, data) => {
       state.describedBeneficiaries.push(data)
     },
-    REMOVE_BENEFICIARY (state, index) {
-      state.describedBeneficiaries = state.describedBeneficiaries.splice(index)
+    REMOVE_BENEFICIARY: (state, index) => {
+      state.describedBeneficiaries.splice(index, 1)
     }
   }
 })
