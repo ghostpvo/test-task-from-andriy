@@ -65,7 +65,8 @@ export default {
   },
   methods: {
     buildNewBeneficiary (data) {
-      this.$store.commit('PUSH_BENEFICIARY', data)
+      const dataObject = JSON.parse(JSON.stringify(data))
+      this.$store.commit('PUSH_BENEFICIARY', dataObject)
       this.countSum()
       this.$nextTick(() => {
         this.formReset++
@@ -80,7 +81,8 @@ export default {
     countSum () {
       this.beneficiariesPercentSum = 0
       for (let i = 0; i < this.describedBeneficiaries.length; i++) {
-        this.beneficiariesPercentSum += parseInt(this.describedBeneficiaries[i].percent, 10)
+        const current = parseInt(this.describedBeneficiaries[i].percent, 10)
+        this.beneficiariesPercentSum += (isNaN(current) ? 0 : current)
       }
     }
   }
