@@ -33,6 +33,11 @@
     margin-right: 0!important; // Safety checked
   }
 
+  &-controls {
+    display: flex;
+    width: 72px;
+  }
+
   .save-beneficiary {
     display: flex;
     align-items: center;
@@ -51,7 +56,6 @@
     align-items: center;
     justify-content: center;
     @include sq(36px);
-    margin-right: -8px;
     cursor: pointer;
 
     i {

@@ -19,7 +19,8 @@
         class="text-field"
         :placeholder="placeholder"
         :disabled="disabled"
-        v-model="currentVal"
+        :value="value"
+        @input="input"
       />
       <i
         v-if="type === 'date'"
@@ -54,30 +55,11 @@ export default {
     },
     disabled: {
       type: Boolean
-    },
-    reset: {
-      type: Number
-    }
-  },
-  data () {
-    return {
-      currentVal: this.value
-    }
-  },
-  watch: {
-    reset () {
-      this.resetForm()
-    },
-    currentVal () {
-      this.input()
     }
   },
   methods: {
-    input () {
-      this.$emit('input', this.currentVal)
-    },
-    resetForm () {
-      this.currentVal = ''
+    input (data) {
+      this.$emit('input', data.target.value)
     }
   }
 }

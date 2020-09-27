@@ -13,11 +13,13 @@
         :relationship="item.relationship"
         :percent="item.percent"
         @dropBeneficiary="dropBeneficiary(index)"
-        disabled
+        @editBeneficiary="editBeneficiary(index, $event)"
       />
     </div>
     <BeneficiaryField
+      v-if="beneficiariesPercentSum !== 100"
       :groupId="`beneficiary-field-new`"
+      newField
       :formReset="formReset"
       @newBeneficiary="buildNewBeneficiary"
     />
@@ -29,6 +31,7 @@
           {'primary-total-ok': beneficiariesPercentSum === 100},
           {'primary-total-more': beneficiariesPercentSum > 100}
         ]"
+        v-if="beneficiariesPercentSum > 0"
       >
         <i class="uil uil-check" v-if="beneficiariesPercentSum === 100"></i>
         <span class="primary-total-title">Primary Total:</span>
@@ -42,7 +45,14 @@
       :value="'Contingent Beneficiaries'"
       :id="'contingent-beneficiaries-check'"
     />
-    <button class="main-btn go-next-step">Next</button>
+    <button
+      :class="[
+         'main-btn',
+         'go-next-step',
+        {'main-btn-disabled': beneficiariesPercentSum !== 100}
+      ]">
+      Next
+    </button>
   </div>
 </template>
 
@@ -75,6 +85,12 @@ export default {
     dropBeneficiary (index) {
       this.$nextTick(() => {
         this.$store.commit('REMOVE_BENEFICIARY', parseInt(index, 10))
+        this.countSum()
+      })
+    },
+    editBeneficiary (index, newData) {
+      this.$nextTick(() => {
+        this.$store.commit('EDIT_BENEFICIARY', [index, JSON.parse(JSON.stringify(newData))])
         this.countSum()
       })
     },

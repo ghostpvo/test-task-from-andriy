@@ -6,10 +6,9 @@
       :type="'text'"
       :id="`${groupId}-name`"
       :placeholder="'John Doe'"
-      :value="name"
       :disabled="disabled"
-      :reset="formReset"
-      @input="emitName"
+      :value="actual.name"
+      @input="actual.name = $event"
     />
     <TextField
       class="beneficiary-field-date"
@@ -17,30 +16,27 @@
       :type="'date'"
       :id="`${groupId}-date`"
       :placeholder="'MM/DD/YYYY'"
-      :value="birth"
       :disabled="disabled"
-      :reset="formReset"
-      @input="emitBirth"
+      :value="actual.birth"
+      @input="actual.birth = $event"
     />
     <SelectField
       class="beneficiary-field-ssn"
       :id="`${groupId}-ssn`"
       :options="['SSN', 'NSS']"
       :placeholder="'SSN'"
-      :value="ssn"
       :disabled="disabled"
-      :reset="formReset"
-      @update="emitSSN"
+      :value="actual.ssn"
+      @input="actual.ssn = $event"
     />
     <TextField
       class="beneficiary-field-description"
       :type="'text'"
       :id="`${groupId}-description`"
       :placeholder="'Optional'"
-      :value="description"
       :disabled="disabled"
-      :reset="formReset"
-      @input="emitDscr"
+      :value="actual.description"
+      @input="actual.description = $event"
     />
     <SelectField
       class="beneficiary-field-relationship"
@@ -48,35 +44,35 @@
       :id="`${groupId}-relationship`"
       :options="['Trust', 'Contract']"
       :placeholder="'Select'"
-      :value="relationship"
       :disabled="disabled"
-      :reset="formReset"
-      @update="emitRelationship"
+      :value="actual.relationship"
+      @input="actual.relationship = $event"
     />
     <TextField
       class="beneficiary-field-percent"
       :type="'number'"
       :id="`${groupId}-percent`"
       :placeholder="'0'"
-      :value="percent"
       :disabled="disabled"
-      :reset="formReset"
-      @input="emitPercent"
+      :value="actual.percent"
+      @input="actual.percent = $event"
     />
-    <span
-      v-if="disabled"
-      class="drop-beneficiary"
-      @click="dropData"
-    >
-      <i class="uil uil-times"></i>
-    </span>
-    <span
-      v-if="!disabled"
-      class="save-beneficiary"
-      @click="saveData"
-    >
-      <i class="uil uil-check"></i>
-    </span>
+    <div class="beneficiary-field-controls">
+      <span
+        v-if="!newField"
+        class="drop-beneficiary"
+        @click="dropData"
+      >
+        <i class="uil uil-times"></i>
+      </span>
+      <span
+        v-if="newField || isEditedField"
+        class="save-beneficiary"
+        @click="saveData"
+      >
+        <i class="uil uil-check"></i>
+      </span>
+    </div>
   </div>
 </template>
 
@@ -113,37 +109,63 @@ export default {
     },
     formReset: {
       type: Number
+    },
+    newField: {
+      type: Boolean
+    }
+  },
+  data () {
+    return {
+      actual: {
+        name: this.name,
+        birth: this.birth,
+        ssn: this.ssn,
+        description: this.description,
+        relationship: this.relationship,
+        percent: this.percent
+      },
+      isEditedField: false
     }
   },
   computed: {
     readyBeneficiary () {
-      return {}
+      return {
+        name: this.actual.name,
+        birth: this.actual.birth,
+        ssn: this.actual.ssn,
+        description: this.actual.description,
+        relationship: this.actual.relationship,
+        percent: this.actual.percent
+      }
+    },
+    isNewField () {
+      return this.newField
+    }
+  },
+  watch: {
+    formReset () {
+      for (const item in this.actual) {
+        this.actual[item] = ''
+      }
+    },
+    newField () {
+      this.isNewField = this.newField
+    },
+    readyBeneficiary () {
+      if (!this.newField && !this.isEditedField) this.isEditedField = true
     }
   },
   methods: {
     saveData () {
-      this.$emit('newBeneficiary', this.readyBeneficiary)
+      if (this.newField) {
+        this.$emit('newBeneficiary', this.readyBeneficiary)
+      } else {
+        this.$emit('editBeneficiary', this.readyBeneficiary)
+        this.isEditedField = false
+      }
     },
     dropData () {
       this.$emit('dropBeneficiary')
-    },
-    emitName (data) {
-      this.readyBeneficiary.name = data
-    },
-    emitBirth (data) {
-      this.readyBeneficiary.birth = data
-    },
-    emitSSN (data) {
-      this.readyBeneficiary.ssn = data
-    },
-    emitDscr (data) {
-      this.readyBeneficiary.description = data
-    },
-    emitRelationship (data) {
-      this.readyBeneficiary.relationship = data
-    },
-    emitPercent (data) {
-      this.readyBeneficiary.percent = data
     }
   }
 }

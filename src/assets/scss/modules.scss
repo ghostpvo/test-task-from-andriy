@@ -11,10 +11,12 @@
   cursor: pointer;
 
   &:hover {
-    background-color: lighten($general-blue-clr, 10%);
+    &:not(.main-btn-disabled) {
+      background-color: lighten($general-blue-clr, 10%);
+    }
   }
 
-  &.disabled {
+  &-disabled {
     cursor: default;
     background-color: $grey-clr;
   }

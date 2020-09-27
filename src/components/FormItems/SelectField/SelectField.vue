@@ -12,9 +12,9 @@
       :options="options"
       class="select-field"
       :placeholder="placeholder"
-      v-model="currentVal"
-      @input="update"
       :disabled="disabled"
+      :value="value"
+      @input="update"
     />
   </div>
 </template>
@@ -39,18 +39,12 @@ export default {
       type: String
     },
     disabled: {
-      type: Boolean,
-      default: false
-    }
-  },
-  data () {
-    return {
-      currentVal: this.value
+      type: Boolean
     }
   },
   methods: {
-    update () {
-      this.$emit('update', this.currentVal)
+    update (data) {
+      this.$emit('input', data)
     }
   }
 }
